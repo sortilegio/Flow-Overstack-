@@ -1,44 +1,26 @@
 @import "bootstrap";
 
-/* mixins, variables, etc. */
+
 @mixin box_sizing {
   -moz-box-sizing:    border-box;
   -webkit-box-sizing: border-box;
   box-sizing:         border-box;
 }
 
-/* universal */
-.center {
-  text-align: center;
-  h1 {
-    margin-bottom: 10px;
-  }
-}
+
+
+
 
 .left {
   text-align: left;
 }
 
-/* typography */
 
-h1, h2, h3, h4, h5, h6 {
-  line-height: 1;
-}
 
-h1 {
-  font-size: 3em;
-  letter-spacing: -2px;
-  margin-bottom: 20px;
-  text-align: center;
-}
 
-h2 {
-  font-size: 1.5em;
-  letter-spacing: -1px;
-  margin-bottom: 20px;
-  text-align: left;
-  font-weight: normal;
-}
+
+
+
 
 h3 {
   font-size: 1.0em;
@@ -60,7 +42,7 @@ p {
 
 
 
-/* miscellaneous */
+
 
 .debug_dump {
   clear: both;
@@ -76,7 +58,7 @@ h2.user-view {
   font-weight: 500;
 }
 
-/* forms */
+
 
 input, textarea, select, .uneditable-input {
   border: 1px solid #bbb;
@@ -103,7 +85,7 @@ input {
   }
 }
 
-/* new question button */
+
 
 .new-question {
   float: right !important;
@@ -120,7 +102,7 @@ input {
   }
 }
 
-/* questions-all */
+
 
 .questions {
   clear: both;
@@ -220,7 +202,7 @@ input {
   }
 }
 
-/*show-questions-views*/
+
 
 table.table {
   border-bottom: 1px solid #ddd;
@@ -266,7 +248,7 @@ table.table {
   }
 }
 
-/* votes */
+
 
 .element-upvote {
   position: relative;
@@ -302,7 +284,7 @@ table.table {
   }
 }
 
-/* comments */
+
 
 .comments {
   margin-bottom: 40px;
@@ -335,7 +317,7 @@ table.table {
 
 }
 
-/*answer*/
+
 
 .answers-view {
   .content {
