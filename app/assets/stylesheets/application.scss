@@ -1,0 +1,372 @@
+@import "bootstrap";
+
+/* mixins, variables, etc. */
+@mixin box_sizing {
+  -moz-box-sizing:    border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing:         border-box;
+}
+
+/* universal */
+.center {
+  text-align: center;
+  h1 {
+    margin-bottom: 10px;
+  }
+}
+
+.left {
+  text-align: left;
+}
+
+/* typography */
+
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1;
+}
+
+h1 {
+  font-size: 3em;
+  letter-spacing: -2px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+h2 {
+  font-size: 1.5em;
+  letter-spacing: -1px;
+  margin-bottom: 20px;
+  text-align: left;
+  font-weight: normal;
+}
+
+h3 {
+  font-size: 1.0em;
+  letter-spacing: 0px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  text-align: left;
+  font-weight: normal;
+  color: gray;
+}
+
+p {
+  font-size: 1.1em;
+  line-height: 1.4em;
+}
+
+
+
+
+
+
+/* miscellaneous */
+
+.debug_dump {
+  clear: both;
+  float: left;
+  width: 100%;
+  margin-top: 45px;
+  @include box_sizing;
+}
+
+
+h2.user-view {
+  font-size: 1.5em;
+  font-weight: 500;
+}
+
+/* forms */
+
+input, textarea, select, .uneditable-input {
+  border: 1px solid #bbb;
+  width: 100%;
+  margin-bottom: 10px;
+  @include box_sizing;
+}
+
+input {
+  height: auto !important;
+}
+
+#error_explanation {
+  color: red;
+  ul {
+    color: red;
+    margin: 0 0 30px 0;
+  }
+}
+
+.field_with_errors {
+  .form-control {
+    color: gray;
+  }
+}
+
+/* new question button */
+
+.new-question {
+  float: right !important;
+  margin-bottom: 20px;
+  background-color: black;
+  color: white;
+  &:hover {
+    background-color: gray;
+    color: darken(white, 10%);
+  }
+  &:active {
+    background-color: lighten(#FF7F00, 20%);
+    color: lighten(white, 20%);
+  }
+}
+
+/* questions-all */
+
+.questions {
+  clear: both;
+  margin-top: 30px;
+  list-style: none;
+  padding: 0;
+  li {
+    padding: 0;
+  }
+  .list-group {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    margin-bottom: 0px;
+    .list-group-item {
+      display: inline-flex !important;
+      width: 100%;
+      height: auto;
+      border-radius: 0px;
+      border-bottom: 0px none;
+      border-left: 0px none;
+      border-right: 0px none;
+    }
+  }
+}
+
+.metrics{
+  width: 13%;
+  height: 50px;
+  display: inline-flex;
+  .votes {
+    display: block;
+    height: 38px;
+    min-width: 38px;
+    margin: 0 3px 0 0;
+    font-size: 11px;
+    color: #848d95;
+    padding: 5px 10px 6px 5px;
+    text-align: center;
+    .mini-counts {
+      font-size: 17px;
+      font-weight: 300;
+      color: #6a737c;
+      margin-bottom: 2px;
+      display: inline-flex;
+    }
+  }
+  .answers{
+    display: block;
+    height: 38px;
+    min-width: 38px;
+    margin: 0 3px 0 0;
+    font-size: 11px;
+    color: #848d95;
+    padding: 5px 5px 6px 10px;
+    text-align: center;
+    .mini-counts {
+      font-size: 17px;
+      font-weight: 300;
+      color: #6a737c;
+      margin-bottom: 2px;
+      display: inline-flex;
+    }
+  }
+}
+
+.summary {
+  width: 82%;
+  float: left;
+  padding: 0;
+  margin-left: 30px;
+  display: block;
+  .title a{
+    text-decoration: none !important;
+    color: #FF6000;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.3;
+    margin-bottom: 0.5em;
+    width: 97%;
+    display: block;
+  }
+  .info {
+    font-size: 12px;
+    color: #a9a9a9;
+    a {
+      text-decoration: none !important;
+      font-size: 12px;
+      color: #a9a9a9;
+      font-weight: 500;
+      line-height: 1.3;
+      width: auto;
+      white-space: nowrap;
+      width: 97%;
+      display: inline;
+    }
+  }
+}
+
+/*show-questions-views*/
+
+table.table {
+  border-bottom: 1px solid #ddd;
+  table-layout: fixed;
+  &:first-child {
+    border: none;
+  }
+  td {
+    border: none !important;
+    &:first-child {
+      width: 10%;
+    }
+    &:nth_child(2) {
+      width: 90%;
+    }
+  }
+}
+
+.questions-view {
+  .title {
+    text-align: left;
+    font-size: 35px;
+    margin-bottom: 15px;
+  }
+  .author {
+    color: gray;
+    display: block;
+    font-size: 13px;
+    margin-bottom: 15px;
+  }
+  .content {
+    display: block;
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    line-height: 0px !important;
+    margin-bottom: 15px;
+  }
+  .timestamp {
+    color: gray;
+    display: block;
+    font-size: 13px;
+    margin-bottom: 10px;
+  }
+}
+
+/* votes */
+
+.element-upvote {
+  position: relative;
+  float: left;
+  text-align: center;
+  text-decoration: none;
+  margin-top: 10px;
+  margin-right: 20px;
+  padding: 5px 5px;
+  width: 35px;
+  .upvote-arrow {
+    border-bottom: 18px solid #534540;
+    border-left: 14px solid transparent;
+    border-right: 14px solid transparent;
+    border-top: 18px solid transparent;
+    left: 6px;
+    position: absolute;
+    top: 0px;
+  }
+  .upvote-count {
+    display: block;
+    color: #303030;
+    font-size: 25px;
+    font-weight: bold;
+    line-height: 1;
+    margin-top: 38px;
+  }
+  &:hover .upvote-arrow { border-bottom-color: #F04500; }
+  &:hover .upvote-count { color: #F04500; }
+  &.upvote-active {
+    .upvote-arrow { border-bottom-color: #F04500; }
+    .upvote-count { color: #F04500; }
+  }
+}
+
+/* comments */
+
+.comments {
+  margin-bottom: 40px;
+  .list-group {
+    .list-group-item {
+      border-radius: 0px;
+      border-bottom: 0px none;
+      border-left: 0px none;
+      border-right: 0px none;
+      &:last-child {
+        border-bottom: 1px solid #ddd;
+      }
+      p {
+        display: inline;
+        font-size: 14px;
+      }
+      .commenter {
+        font-size: 13px;
+        color: gray;
+        a {
+          color: gray;
+          &:hover {
+            color: gray;
+            text-decoration: none;
+          }
+        }
+      }
+    }
+  }
+
+}
+
+/*answer*/
+
+.answers-view {
+  .content {
+    display: block;
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    line-height: 0px !important;
+  }
+  .timestamp {
+    color: gray;
+    display: block;
+    font-size: 13px;
+    margin-bottom: 10px;
+  }
+}
+
+.answers-header {
+  border-bottom: 1px solid #ddd;
+  h2 {
+    margin-bottom: 20px;
+  }
+}
+
+.answer-form {
+  margin-top: 40px;
+  form {
+    input[type="submit"] {
+      background-color: gainsboro;
+      &:hover {
+        background-color: darken(gainsboro, 30%);
+      }
+    }
+  }
+}

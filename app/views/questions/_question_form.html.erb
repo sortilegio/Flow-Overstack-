@@ -1,0 +1,10 @@
+<div class="col-sm-10 col-sm-offset-1">
+  <br>
+<%= form_for(@question) do |f| %>
+  <h1>Nueva Pregunta</h1>
+  <%= render 'shared/error_messages', object: f.object %>
+  <%= f.text_field :title, placeholder: "Título...", class: 'form-control' %>
+  <%= f.text_area :content, placeholder: "Descripción...", class: 'form-control', rows: '10' %>
+  <%= f.submit "Preguntar", class: "btn btn-dark" %>
+<% end %>
+<div/>

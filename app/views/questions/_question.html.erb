@@ -1,0 +1,30 @@
+<li id="question-<%= question.id %>">
+  <div class="list-group">
+    <div class="list-group-item">
+      <div class="metrics">
+        <div class="votes">
+          <div class="mini-counts">
+            <span><%= question.get_likes.size %></span>
+          </div>
+          <div>votes</div>
+        </div>
+        <div class="answers">
+          <div class="mini-counts">
+            <span><%= question.answers.count %></span>
+          </div>
+          <div>answers</div>
+        </div>
+      </div>
+      <div class="summary">
+        <div data-turbolinks="false">
+          <div class="title">
+            <%= link_to question.title, question %>
+          </div>
+          <div class="info">
+            Pregunta de <%= link_to question.user.email, question.user %> Hace <%= time_ago_in_words(question.created_at) %> 
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</li>

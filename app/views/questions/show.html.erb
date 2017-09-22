@@ -1,0 +1,114 @@
+<% provide(:title, "Question #{@question.id}") %>
+<div class="row">
+  <div class="col-sm-10 col-sm-offset-1">
+    <table class="table questions-view">
+      <tbody>
+        <tr>
+          <td>
+            <% if logged_in? && current_user.liked?(@question) %>
+              <%= link_to qvote_question_path(@question), method: :put, class: "element-upvote upvote-active" do %>
+                <span class="upvote-arrow"></span>
+                <span class="upvote-count"><%= @question.get_likes.size %></span>
+              <% end %>
+            <% else %>
+              <%= link_to qvote_question_path(@question), method: :put, class: "element-upvote" do %>
+                <span class="upvote-arrow"></span>
+                <span class="upvote-count"><%= @question.get_likes.size %></span>
+              <% end %>
+            <% end %>
+          </td>
+          <td>
+            <h1 class="title left"><%= @question.title %></h1>
+            <span class="author">Por <%= @question.user.name %></span>
+            <p class="content"><%= markdown(@question.content) %></p>
+            <span class="timestamp">
+              Publicado hace <%= time_ago_in_words(@question.created_at) %>
+            </span>
+          </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>
+            <div class="comments">
+              <h2><%= @question.comments.count %> <span class="glyphicon glyphicon-comment"></span></h2>
+              <ul class="list-group">
+                <% @question.comments.each do |comment| %>
+                  <li class="list-group-item"><span><%= markdown(comment.content) %></span> - <span class="commenter"><%= link_to comment.user.name, comment.user %> Hace <%= time_ago_in_words(comment.created_at) %> </span>
+                  </li>
+                <% end %>
+              </ul>
+              <% if logged_in? %>
+                <%= form_for [@question, Comment.new] do |f| %>
+                  <%= f.text_area :content, class: "form-control", placeholder: "Nuevo comentario" %>
+                  <%= f.submit "Comentar", class: "btn btn-default" %>
+                <% end %>
+              <% end %>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="answers-header">
+      <h2>Respuestas (<%= @question.answers.count %>)</h2>
+    </div>
+
+    <% @question.answers.each do |answer| %>
+      <table class="table answers-view">
+        <tbody>
+          <tr>
+            <td>
+              <% if logged_in? && current_user.liked?(answer) %>
+                <%= link_to avote_answer_path(answer), method: :put, class: "element-upvote upvote-active" do %>
+                  <span class="upvote-arrow"></span>
+                  <span class="upvote-count"><%= answer.get_likes.size %></span>
+                <% end %>
+              <% else %>
+                <%= link_to avote_answer_path(answer), method: :put, class: "element-upvote" do %>
+                  <span class="upvote-arrow"></span>
+                  <span class="upvote-count"><%= answer.get_likes.size %></span>
+                <% end %>
+              <% end %>
+            </td>
+            <td>
+              <p class="content"><%= markdown(answer.content) %></p>
+              <span class="timestamp">
+                Respuesta por <%= answer.user.name %> Hace <%= time_ago_in_words(answer.created_at) %>
+              </span>
+            </td>
+          </tr>
+          <tr>
+            <td></td>
+            <td>
+              <div class="comments">
+                <h3><%= answer.comments.count %> <span class="glyphicon glyphicon-comment"></span></h3>
+                <ul class="list-group">
+                  <% answer.comments.each do |comment| %>
+                    <li class="list-group-item"><span><%= markdown(comment.content) %></span> - <span class="commenter"><%= link_to comment.user.name, comment.user %> Hace <%= time_ago_in_words(comment.created_at) %> </span>
+                    </li>
+                  <% end %>
+                </ul>
+                <% if logged_in? %>
+                  <%= form_for [answer, Comment.new] do |f| %>
+                    <%= f.text_area :content, class: "form-control", placeholder: "Nuevo comentario" %>
+                    <%= f.submit "Comentar", class: "btn btn-default" %>
+                  <% end %>
+                <% end %>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    <% end %>
+
+    <div class="answer-form">
+      <% if logged_in? %>
+        <h2>Tu Respuesta</h2>
+        <%= form_for [@question, @question.answers.build] do |f| %>
+          <%= f.text_area :content, class: "form-control", placeholder: "Nueva Respuesta" %>
+          <%= f.submit "Responder", class: "btn btn-default" %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>
